@@ -220,7 +220,9 @@ public class ResourceBundleMessageSource extends AbstractResourceBasedMessageSou
 	protected ResourceBundle doGetBundle(String basename, Locale locale) throws MissingResourceException {
 		ClassLoader classLoader = getBundleClassLoader();
 		Assert.state(classLoader != null, "No bundle ClassLoader set");
-		return ResourceBundle.getBundle(basename, locale, classLoader, new MessageSourceControl());
+		//return ResourceBundle.getBundle(basename, locale, classLoader, new MessageSourceControl());
+		//TODO: Fix workaround for SPR-16776
+		return ResourceBundle.getBundle(basename, locale, classLoader);
 	}
 
 	/**
